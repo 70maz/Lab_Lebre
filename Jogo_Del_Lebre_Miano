@@ -1,0 +1,218 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+
+//tipos de cartas , vamos dar delete a isto e mudar para #define
+
+#define ovelha=2
+    ovelha,
+    lebre,
+    raposa,
+    tartaruga,
+    lobo,
+    uivar_do_lobo,
+
+
+//Constituição da Carta
+typedef struct 
+{
+    AnimalCarta tipo;
+    int id;
+} Carta;
+
+  
+//Constituição da Baralho
+typedef struct {
+    char v[81]; //cartas
+    int n; //numero de cartas
+}Deck;
+
+
+
+typedef struct {
+    // Defina a estrutura da sua tabela aqui
+    // (por exemplo, pode ter campos para cartas ou outras informações relevantes)
+    int size; // Vamos supor que o tamanho da tabela seja o critério de término do jogo
+} Mesa;
+
+bool EndGame(Mesa mesa) {
+    // Verifica se o jogo acabou com base no tamanho da tabela
+    if (mesa.size >= 8) {
+        return true; // Retorna verdadeiro se o jogo tiver acabado
+    }
+    else {
+        return false; // Retorna falso se o jogo ainda estiver em andamento
+    }
+}
+
+//Constituição da Mão
+typedef struct {
+    char v[8];
+    int m;
+}Hand;
+
+//Constituição do jogador
+typedef struct 
+{
+    char nome[50];
+    int pontos;
+    Carta mao[6];
+} Jogador;
+
+int m;
+
+
+InitBaralho
+
+
+
+void baralhar(Deck* baralho) {
+    // Shuffle the deck using Fisher-Yates algorithm
+    srand(time(NULL)); // Seed for random number generation
+    int i, j;
+    for (i = baralho->n - 1; i > 0; i--) {
+        j = rand() % (i + 1);
+        Carta temp = baralho->v[i];
+        baralho->v[i] = baralho->v[j];
+        baralho->v[j] = temp;
+
+
+        void InitJogador[Hand * Jogador]
+        {
+            Int i;
+        for (i = 0; i < HAND_SIZE; i++)
+            Jogador-- > V[i] = '';
+        Jogador-- > m = 0;
+        }
+
+
+        void JogarCarta (Hand*Jogador,Hand*Mesa)
+        {
+            int i, carta;
+            carta = Rand() % Jogador-->m;
+            Mesa-- > [Mesa->m] = Jogador-- > V[carta]
+                For(i = carta; i < Jogador - m - 1; i++)
+                Jogador-- > V[i] = Jogador->V[i + 1];
+            Jogador --> m--;
+            Mesa --> m++;
+
+
+Hand1
+//tudo a 0 , char e m.
+
+
+InitJogador(Jogador[1])
+
+
+
+
+DarCartas
+
+Dacrcartas
+
+
+
+
+int escolha;
+char nome;
+
+
+
+ 
+int main() {
+
+int ronda=0   
+
+    do {
+
+
+        printf("  Menu Principal \n \n");
+        printf("      1- Jogar \n");
+        printf("      2- Carregar o jogo \n");
+        printf("      3- Como jogar \n");
+        printf("      4- Sair \n");
+
+        printf("Escolha uma opcao (1-4): ");
+        scanf_s("%d", &escolha);
+
+
+
+
+
+        switch (escolha) {
+        case 1:
+            printf("jogar e tal\n");
+            printf("qual e o teu nome?");
+            scanf_s( "%c", &nome);
+            printf("O teu nome é %c", &nome);
+
+            int main() {
+                // Initialize deck
+                Deck baralho;
+                baralho.n = 81; // For instance, a deck of 81 cards
+
+                // Initialize players
+                Jogador jogador1, jogador2;
+                jogador1.pontos = jogador2.pontos = 0;
+
+                // Shuffle the deck before dealing
+                baralhar(&baralho);
+
+                // Deal cards to players
+                int i;
+                for (i = 0; i < 6; i++) {
+                    jogador1.mao.v[i] = baralho.v[i]; // Deal cards to player 1
+                    jogador1.mao.m++;
+                }
+                for (i = 6; i < 12; i++) {
+                    jogador2.mao.v[i - 6] = baralho.v[i]; // Deal cards to player 2
+                    jogador2.mao.m++;
+                }
+
+                // Example: Display player 1's hand
+                printf("Player 1's hand:\n");
+                for (i = 0; i < jogador1.mao.m; i++) {
+                    // Display card information (e.g., type and id)
+                    printf("Card %d: Type %d, ID %d\n", i + 1, jogador1.mao.v[i].tipo, jogador1.mao.v[i].id);
+                }
+
+
+
+
+            break;
+        case 2:
+            printf("A carregar o jogo...\n");
+            break;
+        case 3:
+            printf("A abrir a pagina de instrucoes...\n");
+            FILE* arquivo; // Ponteiro para o arquivo
+
+            // Abrindo o arquivo "regras" em modo de leitura
+            arquivo = fopen("regras.txt", "r");
+
+            if (arquivo == NULL) {
+                // Se houver um erro ao abrir o arquivo, exiba uma mensagem de erro
+                perror("Erro ao abrir o arquivo");
+                return 1; // Saia do programa indicando erro
+            }
+
+            // Se o arquivo foi aberto com sucesso, faça o que for necessário
+            // Por exemplo, leia o conteúdo do arquivo aqui
+
+            // Lembre-se de fechar o arquivo após utilizá-lo
+            fclose(arquivo);
+
+          
+            break;
+        case 4:
+            printf("Sair do jogo.\n");
+            break;
+        default:
+            printf("Opcao invalida. Insira uma das opcoes, ao usar um numero de 1 a 4\n");
+        }
+
+    } while (escolha < 1 || escolha > 4);
+
+    return 0;
+}
